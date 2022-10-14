@@ -3,7 +3,11 @@
 const tailwindConfig = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
-        extend: {},
+        extend: {
+            gridTemplateRows: {
+                pageWrapper: '1fr auto;',
+            },
+        },
     },
     plugins: [],
 }
