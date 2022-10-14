@@ -8,7 +8,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     return (
         <>
             <Helmet>
-                <title>React Typescript</title>
+                <title>Moonlay Assessment</title>
             </Helmet>
             <div className='w-full min-h-screen grid grid-rows-pageWrapper'>
                 <div>
