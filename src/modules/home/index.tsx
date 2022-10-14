@@ -15,14 +15,17 @@ const HomeModule = () => {
     const [menus] = useState<Menu[]>([
         {
             title: 'People',
+            link: '/people',
             icon: <PeopleIcon />,
         },
         {
             title: 'Planets',
+            link: '/planets',
             icon: <PlanetIcon />,
         },
         {
             title: 'Starships',
+            link: '/starships',
             icon: <StarIcon />,
         },
     ])
@@ -35,9 +38,16 @@ const HomeModule = () => {
                 </div>
                 <div className={HomeModuleCardsClassName}>
                     {menus.map((item) => {
-                        const { title, icon } = item
+                        const { title, link, icon } = item
 
-                        return <Card key={title} title={title} icon={icon} />
+                        return (
+                            <Card
+                                key={title}
+                                title={title}
+                                link={link}
+                                icon={icon}
+                            />
+                        )
                     })}
                 </div>
             </div>
