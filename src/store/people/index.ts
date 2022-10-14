@@ -1,6 +1,7 @@
 import { types, Instance } from 'mobx-state-tree'
 
 export const People = types.model('People', {
+    id: types.identifier,
     name: types.string,
     birth_year: types.string,
     gender: types.string,

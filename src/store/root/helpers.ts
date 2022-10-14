@@ -7,6 +7,7 @@ export const fetchPeople = async () => {
 
         const cleaned = data.results.map((person: IPeople): IPeople => {
             return {
+                id: new Date().getTime().toString(),
                 name: person.name,
                 birth_year: person.birth_year,
                 gender: person.gender,
@@ -27,6 +28,7 @@ export const fetchPlanet = async () => {
 
         const cleaned = data.results.map((planet: IPlanet): IPlanet => {
             return {
+                id: new Date().getTime().toString(),
                 name: planet.name,
                 population: planet.population,
             }
@@ -44,6 +46,7 @@ export const fetchStarships = async () => {
 
         const cleaned = data.results.map((starship: IStarships): IStarships => {
             return {
+                id: new Date().getTime().toString(),
                 name: starship.name,
                 model: starship.model,
                 manufacturer: starship.manufacturer,

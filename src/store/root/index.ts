@@ -1,6 +1,6 @@
 import { flow, types, Instance } from 'mobx-state-tree'
 
-import { People, Planet, Starships } from '@/store'
+import { People, Planet, Starships, IPeople } from '@/store'
 import { peopleSchema, planetSchema, starshipSchema } from '@/utils'
 
 import { fetchPeople, fetchPlanet, fetchStarships } from './helpers'
@@ -21,7 +21,7 @@ export const Root = types
                 if (isValid) {
                     self.people.splice(0, self.people.length)
 
-                    people.forEach((person: any) => {
+                    people.forEach((person: IPeople) => {
                         self.people.push(People.create(person))
                     })
                 }
