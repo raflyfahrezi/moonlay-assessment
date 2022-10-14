@@ -1,3 +1,4 @@
+import Header from './header'
 import Wrapper from './wrapper'
 
-export { Wrapper }
+export { Header, Wrapper }
