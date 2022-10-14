@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { CardProps } from './types'
-import { CardClassName } from './styles'
+import { CardClassName, CardLinkClassName } from './styles'
 
-const Card = ({ title, icon }: CardProps) => {
+const Card = ({ title, link, icon }: CardProps) => {
     return (
-        <div className={CardClassName}>
-            {icon}
-            <p>{title}</p>
-        </div>
+        <Link to={link} className={CardLinkClassName}>
+            <div className={CardClassName}>
+                {icon}
+                <p>{title}</p>
+            </div>
+        </Link>
     )
 }
 
