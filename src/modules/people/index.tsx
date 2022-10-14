@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { Header, Wrapper } from '@/components'
+import { Header, Search, Wrapper } from '@/components'
 
 const PeopleModule = () => {
     return (
         <Wrapper>
             <Header title='People' />
+            <Search />
             <div></div>
         </Wrapper>
     )
