@@ -20,7 +20,19 @@ const PeopleModule = () => {
                 <Search />
                 <div className={peopleCardBoxClassName}>
                     {toJS(store.people).map((person: IPeople) => {
-                        return <Card key={person.name} {...person} />
+                        const { id, name, gender, starships, birth_year } =
+                            person
+
+                        const description = `has ${starships.length} starships and was born in ${birth_year}.`
+
+                        return (
+                            <Card
+                                key={id}
+                                title={name}
+                                titleSpan={gender}
+                                description={description}
+                            />
+                        )
                     })}
                 </div>
             </ModuleWrapper>
