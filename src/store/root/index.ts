@@ -64,7 +64,31 @@ export const Root = types
             self.people.push(People.create(person))
         }
 
-        return { getPeople, getPlanets, getStarships, addPeople }
+        const getOnePeople = (id: string) => {
+            return self.people.find((person) => person.id === id)
+        }
+
+        const updatePeople = (person: IPeople) => {
+            const index = self.people.findIndex((p) => p.id === person.id)
+
+            self.people[index] = person
+        }
+
+        const deletePeople = (id: string) => {
+            const index = self.people.findIndex((person) => person.id === id)
+
+            self.people.splice(index, 1)
+        }
+
+        return {
+            getPeople,
+            getPlanets,
+            getStarships,
+            addPeople,
+            getOnePeople,
+            updatePeople,
+            deletePeople,
+        }
     })
 
 export interface IRoot extends Instance<typeof Root> {}
