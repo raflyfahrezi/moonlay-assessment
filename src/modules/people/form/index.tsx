@@ -1,20 +1,24 @@
 import React from 'react'
-import { toJS } from 'mobx'
+import { v4 as uuidv4 } from 'uuid'
 import { useForm } from 'react-hook-form'
-import { observer } from 'mobx-react-lite'
 
+import { IPeople } from '@/store'
 import { useStore } from '@/hooks'
 import { Input, Select, Button } from '@/components'
 
-import { IFormData } from './types'
+import { FormProps, IFormData } from './types'
 
-const PeopleForm = () => {
+const PeopleForm = ({ modalClose }: FormProps) => {
     const store = useStore()
 
     const { register, handleSubmit } = useForm<IFormData>({})
 
     const formSubmitHandler = (data: IFormData) => {
-        console.log(data)
+        const dataTemp: IPeople = { ...data, id: uuidv4(), homeworld: '' }
+
+        store.addPeople(dataTemp)
+
+        modalClose()
     }
 
     return (
@@ -36,19 +40,7 @@ const PeopleForm = () => {
                 <option value='male'>Male</option>
                 <option value='female'>Female</option>
             </Select>
-            <Select
-                {...register('homeworld')}
-                label='Homeworld'
-                placeholder='Choose homeworld'
-            >
-                {toJS(store.planet).map((planet) => {
-                    return (
-                        <option key={planet.id} value={planet.id}>
-                            {planet.name}
-                        </option>
-                    )
-                })}
-            </Select>
+
             <div className='w-full pt-4 flex flex-col'>
                 <Button type='submit'>Create</Button>
             </div>
@@ -56,4 +48,4 @@ const PeopleForm = () => {
     )
 }
 
-export default observer(PeopleForm)
+export default PeopleForm
