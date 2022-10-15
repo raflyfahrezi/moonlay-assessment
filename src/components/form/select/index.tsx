@@ -14,7 +14,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
                     className='w-full px-4 py-2 text-base border-2 border-gray-600 rounded bg-gray-900 outline-0 text-gray-200 transition-all focus:border-gray-200'
                     {...props}
                 >
-                    <option value='' selected disabled>
+                    <option value='' disabled>
                         {placeholder}
                     </option>
                     {children}
