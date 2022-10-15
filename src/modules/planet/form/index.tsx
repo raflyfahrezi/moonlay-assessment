@@ -40,8 +40,8 @@ const PlanetForm = ({ planet, modalClose }: FormProps) => {
             />
             <Input
                 {...register('population')}
-                label='Birth Year'
-                placeholder='Type birth year'
+                label='Population'
+                placeholder='Type population'
                 defaultValue={planet?.population ?? ''}
             />
 
