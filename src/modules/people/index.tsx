@@ -6,9 +6,14 @@ import { observer } from 'mobx-react-lite'
 
 import { IPeople } from '@/store'
 import { useStore } from '@/hooks'
-import { Card, Header, Search, Wrapper, ModuleWrapper } from '@/components'
-
-import { peopleCardBoxClassName } from './styles'
+import {
+    Card,
+    Header,
+    Search,
+    Wrapper,
+    CardWrapper,
+    ModuleWrapper,
+} from '@/components'
 
 const PeopleModule = () => {
     const store = useStore()
@@ -18,7 +23,7 @@ const PeopleModule = () => {
             <Header title='People' />
             <ModuleWrapper>
                 <Search />
-                <div className={peopleCardBoxClassName}>
+                <CardWrapper>
                     {toJS(store.people).map((person: IPeople) => {
                         const { id, name, gender, starships, birth_year } =
                             person
@@ -34,7 +39,7 @@ const PeopleModule = () => {
                             />
                         )
                     })}
-                </div>
+                </CardWrapper>
             </ModuleWrapper>
         </Wrapper>
     )
