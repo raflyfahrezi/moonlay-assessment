@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 
+import { PageWrapper } from '@/layout'
 import {
     HomeModule,
     PeopleModule,
@@ -10,18 +11,34 @@ import {
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <HomeModule />,
+        element: (
+            <PageWrapper>
+                <HomeModule />
+            </PageWrapper>
+        ),
     },
     {
         path: '/people',
-        element: <PeopleModule />,
+        element: (
+            <PageWrapper>
+                <PeopleModule />
+            </PageWrapper>
+        ),
     },
     {
         path: '/planets',
-        element: <PlanetModule />,
+        element: (
+            <PageWrapper>
+                <PlanetModule />
+            </PageWrapper>
+        ),
     },
     {
         path: '/starships',
-        element: <StarshipModule />,
+        element: (
+            <PageWrapper>
+                <StarshipModule />
+            </PageWrapper>
+        ),
     },
 ])
