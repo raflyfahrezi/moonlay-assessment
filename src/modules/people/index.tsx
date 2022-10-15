@@ -40,7 +40,7 @@ const PeopleModule = () => {
             ...modal,
             title: 'Add New Person',
             isOpen: true,
-            children: <PeopleForm />,
+            children: <PeopleForm modalClose={modalOnCloseHandler} />,
         })
     }
 
@@ -63,10 +63,11 @@ const PeopleModule = () => {
                     />
                     <CardWrapper>
                         {toJS(store.people).map((person: IPeople) => {
-                            const { id, name, gender, starships, birth_year } =
-                                person
+                            const { id, name, gender, birth_year } = person
 
-                            const description = `has ${starships.length} starships and was born in ${birth_year}.`
+                            const description = `${
+                                name.split(' ')[0]
+                            } was born in ${birth_year}.`
 
                             return (
                                 <Card
