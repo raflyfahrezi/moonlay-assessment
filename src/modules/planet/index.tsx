@@ -91,7 +91,7 @@ const PlanetModule = () => {
                 children={modal.children}
             />
             <Wrapper>
-                <Header title='People' />
+                <Header title='Planets' />
                 <ModuleWrapper>
                     <Search
                         value=''
