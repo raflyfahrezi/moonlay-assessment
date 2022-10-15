@@ -13,9 +13,9 @@ const Modal = ({ title, isOpen, children, onClose }: ModalProps) => {
     return (
         <>
             {isOpen && (
-                <div className='fixed w-full min-h-screen py-10 bg-black bg-opacity-60 flex justify-center z-50'>
+                <div className='fixed w-full min-h-screen py-10 bg-black bg-opacity-60 flex justify-center items-center z-50'>
                     <Wrapper>
-                        <div className='w-full h-full p-6 bg-gray-900 rounded flex flex-col'>
+                        <div className='w-full p-6 bg-gray-900 rounded flex flex-col'>
                             <div className='w-full flex justify-between items-center'>
                                 <div>
                                     <p className='font-bold text-lg'>{title}</p>

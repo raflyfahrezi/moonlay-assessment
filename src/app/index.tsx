@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useStore } from '@/hooks'
 import React, { useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { RouterProvider } from 'react-router-dom'
 
-import { PageWrapper } from '@/layout'
+import { useStore } from '@/hooks'
 
 import { router } from './helpers'
 
@@ -22,9 +22,9 @@ const App = () => {
     }, [store])
 
     return (
-        <PageWrapper>
+        <AnimatePresence exitBeforeEnter>
             <RouterProvider router={router} />
-        </PageWrapper>
+        </AnimatePresence>
     )
 }
 

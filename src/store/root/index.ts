@@ -1,6 +1,13 @@
 import { flow, types, Instance } from 'mobx-state-tree'
 
-import { People, Planet, Starships, IPeople } from '@/store'
+import {
+    People,
+    Planet,
+    Starships,
+    IPeople,
+    IPlanet,
+    IStarships,
+} from '@/store'
 import { peopleSchema, planetSchema, starshipSchema } from '@/utils'
 
 import { fetchPeople, fetchPlanet, fetchStarships } from './helpers'
@@ -64,8 +71,24 @@ export const Root = types
             self.people.push(People.create(person))
         }
 
+        const addPlanet = (planet: IPlanet) => {
+            self.planet.push(Planet.create(planet))
+        }
+
+        const addStarship = (starship: IStarships) => {
+            self.starships.push(Starships.create(starship))
+        }
+
         const getOnePeople = (id: string) => {
             return self.people.find((person) => person.id === id)
+        }
+
+        const getOnePlanet = (id: string) => {
+            return self.planet.find((planet) => planet.id === id)
+        }
+
+        const getOneStarship = (id: string) => {
+            return self.starships.find((starship) => starship.id === id)
         }
 
         const updatePeople = (person: IPeople) => {
@@ -74,10 +97,36 @@ export const Root = types
             self.people[index] = person
         }
 
+        const updatePlanet = (planet: IPlanet) => {
+            const index = self.planet.findIndex((p) => p.id === planet.id)
+
+            self.planet[index] = planet
+        }
+
+        const updateStarship = (starship: IStarships) => {
+            const index = self.starships.findIndex((s) => s.id === starship.id)
+
+            self.starships[index] = starship
+        }
+
         const deletePeople = (id: string) => {
             const index = self.people.findIndex((person) => person.id === id)
 
             self.people.splice(index, 1)
+        }
+
+        const deletePlanet = (id: string) => {
+            const index = self.planet.findIndex((planet) => planet.id === id)
+
+            self.planet.splice(index, 1)
+        }
+
+        const deleteStarship = (id: string) => {
+            const index = self.starships.findIndex(
+                (starship) => starship.id === id
+            )
+
+            self.starships.splice(index, 1)
         }
 
         return {
@@ -85,9 +134,17 @@ export const Root = types
             getPlanets,
             getStarships,
             addPeople,
+            addPlanet,
+            addStarship,
             getOnePeople,
+            getOnePlanet,
+            getOneStarship,
             updatePeople,
+            updatePlanet,
+            updateStarship,
             deletePeople,
+            deletePlanet,
+            deleteStarship,
         }
     })
 
