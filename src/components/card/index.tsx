@@ -8,9 +8,17 @@ import {
     cardContentClassName,
     cardTitleSpanClassName,
     cardDescriptionClassName,
+    cardButtonDeleteClassName,
+    cardButtonDetailsClassName,
 } from './styles'
 
-const Card = ({ title, titleSpan, description }: CardProps) => {
+const Card = ({
+    title,
+    titleSpan,
+    description,
+    deleteCard,
+    openDetails,
+}: CardProps) => {
     return (
         <div className={cardClassName}>
             <div className={cardContentClassName}>
@@ -24,9 +32,22 @@ const Card = ({ title, titleSpan, description }: CardProps) => {
                 </p>
                 <p className={cardDescriptionClassName}>{description}</p>
             </div>
-            <button type='button' className={cardButtonClassName}>
-                Open Details
-            </button>
+            <div className={cardButtonClassName}>
+                <button
+                    type='button'
+                    onClick={openDetails}
+                    className={cardButtonDetailsClassName}
+                >
+                    Open Details
+                </button>
+                <button
+                    type='button'
+                    onClick={deleteCard}
+                    className={cardButtonDeleteClassName}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }

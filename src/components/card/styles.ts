@@ -9,4 +9,8 @@ export const cardTitleSpanClassName = 'text-sm font-normal'
 
 export const cardDescriptionClassName = 'text-gray-400 text-left'
 
-export const cardButtonClassName = 'text-blue-500 font-bold'
+export const cardButtonClassName = 'w-full flex justify-between'
+
+export const cardButtonDetailsClassName = 'text-blue-500 font-bold'
+
+export const cardButtonDeleteClassName = 'text-red-500 font-bold'
