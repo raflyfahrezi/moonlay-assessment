@@ -14,7 +14,6 @@ export const fetchPeople = async () => {
                 birth_year: person.birth_year,
                 gender: person.gender,
                 homeworld: person.homeworld,
-                starships: person.starships,
             }
         })
 

@@ -60,7 +60,11 @@ export const Root = types
             }
         })
 
-        return { getPeople, getPlanets, getStarships }
+        const addPeople = (person: IPeople) => {
+            self.people.push(People.create(person))
+        }
+
+        return { getPeople, getPlanets, getStarships, addPeople }
     })
 
 export interface IRoot extends Instance<typeof Root> {}
