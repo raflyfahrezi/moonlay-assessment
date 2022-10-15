@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useStore } from '@/hooks'
 import React, { useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'

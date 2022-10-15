@@ -4,22 +4,50 @@ import { CardProps } from './types'
 import {
     cardClassName,
     cardTitleClassName,
+    cardButtonClassName,
+    cardContentClassName,
     cardTitleSpanClassName,
+    cardDescriptionClassName,
+    cardButtonDeleteClassName,
+    cardButtonDetailsClassName,
 } from './styles'
 
 const Card = ({
-    name,
-    gender,
-    homeworld,
-    starships,
-    birth_year,
+    title,
+    titleSpan,
+    description,
+    deleteCard,
+    openDetails,
 }: CardProps) => {
     return (
         <div className={cardClassName}>
-            <p className={cardTitleClassName}>
-                {name} <span className={cardTitleSpanClassName}>{gender}</span>
-            </p>
-            <p>{starships.length} starships</p>
+            <div className={cardContentClassName}>
+                <p className={cardTitleClassName}>
+                    {title}{' '}
+                    {titleSpan && (
+                        <span className={cardTitleSpanClassName}>
+                            {titleSpan}
+                        </span>
+                    )}
+                </p>
+                <p className={cardDescriptionClassName}>{description}</p>
+            </div>
+            <div className={cardButtonClassName}>
+                <button
+                    type='button'
+                    onClick={openDetails}
+                    className={cardButtonDetailsClassName}
+                >
+                    Open Details
+                </button>
+                <button
+                    type='button'
+                    onClick={deleteCard}
+                    className={cardButtonDeleteClassName}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }

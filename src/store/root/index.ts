@@ -1,6 +1,6 @@
 import { flow, types, Instance } from 'mobx-state-tree'
 
-import { People, Planet, Starships } from '@/store'
+import { People, Planet, Starships, IPeople } from '@/store'
 import { peopleSchema, planetSchema, starshipSchema } from '@/utils'
 
 import { fetchPeople, fetchPlanet, fetchStarships } from './helpers'
@@ -21,7 +21,7 @@ export const Root = types
                 if (isValid) {
                     self.people.splice(0, self.people.length)
 
-                    people.forEach((person: any) => {
+                    people.forEach((person: IPeople) => {
                         self.people.push(People.create(person))
                     })
                 }
@@ -60,7 +60,35 @@ export const Root = types
             }
         })
 
-        return { getPeople, getPlanets, getStarships }
+        const addPeople = (person: IPeople) => {
+            self.people.push(People.create(person))
+        }
+
+        const getOnePeople = (id: string) => {
+            return self.people.find((person) => person.id === id)
+        }
+
+        const updatePeople = (person: IPeople) => {
+            const index = self.people.findIndex((p) => p.id === person.id)
+
+            self.people[index] = person
+        }
+
+        const deletePeople = (id: string) => {
+            const index = self.people.findIndex((person) => person.id === id)
+
+            self.people.splice(index, 1)
+        }
+
+        return {
+            getPeople,
+            getPlanets,
+            getStarships,
+            addPeople,
+            getOnePeople,
+            updatePeople,
+            deletePeople,
+        }
     })
 
 export interface IRoot extends Instance<typeof Root> {}

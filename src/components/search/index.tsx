@@ -2,11 +2,17 @@ import React from 'react'
 
 import { Input, Button } from '@/components'
 
-const Search = () => {
+import { SearchProps } from './types'
+
+const Search = ({ value, onChange, onClick, placeholder }: SearchProps) => {
     return (
         <div className='flex gap-6'>
-            <Input placeholder='Search' />
-            <Button>Add new</Button>
+            <Input
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+            />
+            <Button onClick={onClick}>Add new</Button>
         </div>
     )
 }
