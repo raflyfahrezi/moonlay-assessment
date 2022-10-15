@@ -5,6 +5,7 @@ import {
     cardClassName,
     cardTitleClassName,
     cardButtonClassName,
+    cardContentClassName,
     cardTitleSpanClassName,
     cardDescriptionClassName,
 } from './styles'
@@ -12,7 +13,7 @@ import {
 const Card = ({ title, titleSpan, description }: CardProps) => {
     return (
         <div className={cardClassName}>
-            <div>
+            <div className={cardContentClassName}>
                 <p className={cardTitleClassName}>
                     {title}{' '}
                     {titleSpan && (
