@@ -1,5 +1,8 @@
+import { IPeople } from '@/store'
+
 export interface FormProps {
     modalClose: () => void
+    person?: IPeople
 }
 
 export interface IFormData {

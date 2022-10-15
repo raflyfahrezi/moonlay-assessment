@@ -3,6 +3,7 @@
 import { toJS } from 'mobx'
 import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
+import swal from 'sweetalert2'
 
 import { IModal } from '@/models'
 import { IPeople } from '@/store'
@@ -44,6 +45,37 @@ const PeopleModule = () => {
         })
     }
 
+    const cardOpenDetailsHandler = (id: string) => {
+        const person = toJS(store.getOnePeople(id))
+
+        setModal({
+            ...modal,
+            title: 'Edit Person',
+            isOpen: true,
+            children: (
+                <PeopleForm person={person} modalClose={modalOnCloseHandler} />
+            ),
+        })
+    }
+
+    const cardDeleteHandler = (id: string) => {
+        swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                store.deletePeople(id)
+
+                swal.fire('Deleted!', 'A person has been deleted.', 'success')
+            }
+        })
+    }
+
     return (
         <>
             <Modal
@@ -75,6 +107,10 @@ const PeopleModule = () => {
                                     title={name}
                                     titleSpan={gender}
                                     description={description}
+                                    deleteCard={() => cardDeleteHandler(id)}
+                                    openDetails={() =>
+                                        cardOpenDetailsHandler(id)
+                                    }
                                 />
                             )
                         })}
