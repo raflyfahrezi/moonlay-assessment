@@ -24,7 +24,12 @@ const PlanetModule = () => {
         <Wrapper>
             <Header title='People' />
             <ModuleWrapper>
-                <Search />
+                <Search
+                    value=''
+                    placeholder='Search person'
+                    onChange={() => {}}
+                    onClick={() => {}}
+                />
                 <CardWrapper>
                     {toJS(store.planet).map((planet: IPlanet) => {
                         const { id, name, population } = planet

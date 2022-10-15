@@ -20,7 +20,12 @@ const StarshipModule = () => {
         <Wrapper>
             <Header title='People' />
             <ModuleWrapper>
-                <Search />
+                <Search
+                    value=''
+                    placeholder='Search person'
+                    onChange={() => {}}
+                    onClick={() => {}}
+                />
                 <CardWrapper>
                     {toJS(store.starships).map((starship: IStarships) => {
                         const { id, name, model, manufacturer } = starship
