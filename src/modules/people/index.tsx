@@ -17,6 +17,8 @@ import {
     ModuleWrapper,
 } from '@/components'
 
+import PeopleForm from './form'
+
 const PeopleModule = () => {
     const store = useStore()
 
@@ -38,7 +40,7 @@ const PeopleModule = () => {
             ...modal,
             title: 'Add New Person',
             isOpen: true,
-            children: null,
+            children: <PeopleForm />,
         })
     }
 
